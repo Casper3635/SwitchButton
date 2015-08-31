@@ -43,7 +43,7 @@ final SwitchView viewSwitch = (SwitchView) findViewById(R.id.view_switch);
 // 设置初始状态。true为开;false为关[默认]。set up original status. true for open and false for close[default]
 viewSwitch.setState(true); 
 viewSwitch.setOnStateChangedListener(new OnStateChangedListener() {
-    @Override public void toggleToOn() {
+    @Override public void toggleToOn(View view) {
     	// 原本为关闭的状态，被点击后 originally present close status after clicking
 		
         // 执行一些耗时的业务逻辑操作 implement some time-consuming logic operation
@@ -52,7 +52,7 @@ viewSwitch.setOnStateChangedListener(new OnStateChangedListener() {
 				viewSwitch.toggleSwitch(true); //以动画效果切换到打开的状态 through changing animation effect to open status
 			}, 1000);
 	}
-	@Override public void toggleToOff() {
+	@Override public void toggleToOff(View view) {
 		// 原本为打开的状态，被点击后 originally present the status of open after clicking
 		viewSwitch.toggleSwitch(false);
 	}

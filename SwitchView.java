@@ -37,7 +37,7 @@ public class SwitchView extends View {
 	 */
 	public static final int STATE_SWITCH_OFF2 = 2;
 	/**
-	 * state prepare to off 
+	 * state switch off 
 	 */
 	public static final int STATE_SWITCH_OFF = 1;
 	/**
@@ -257,10 +257,10 @@ public class SwitchView extends View {
 				invalidate();
 				if (listener != null) {
 					if (state == STATE_SWITCH_OFF2) {
-						listener.toggleToOn();
+						listener.toggleToOn(this);
 					}
 					else if (state == STATE_SWITCH_ON2) {
-						listener.toggleToOff();
+						listener.toggleToOff(this);
 					}
 				}
 				break;
@@ -320,18 +320,18 @@ public class SwitchView extends View {
 	}
 
 	public interface OnStateChangedListener {
-		void toggleToOn();
+		void toggleToOn(View view);
 
-		void toggleToOff();
+		void toggleToOff(View view);
 	}
 
 	private OnStateChangedListener listener = new OnStateChangedListener() {
 
-		@Override public void toggleToOn() {
+		@Override public void toggleToOn(View view) {
 			toggleSwitch(STATE_SWITCH_ON);
 		}
 
-		@Override public void toggleToOff() {
+		@Override public void toggleToOff(View view) {
 			toggleSwitch(STATE_SWITCH_OFF);
 		}
 	};
